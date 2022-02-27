@@ -3,7 +3,6 @@
     <fullyQualifiedTypeName name="com.app.core.pojos.LocalAdmin"/>
     <fullyQualifiedTypeName name="com.app.core.pojos.SuperAdmin"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
-    <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="com.app.core.pojos.GymBranch"/>
     <fullyQualifiedTypeName name="com.app.core.pojos.BaseEntity"/>
     <fullyQualifiedTypeName name="javax.persistence.Entity"/>
@@ -13,4 +12,8 @@
     <fullyQualifiedTypeName name="java.lang.StrictMath"/>
     <fullyQualifiedTypeName name="org.hibernate.annotations.CollectionId"/>
     <fullyQualifiedTypeName name="javax.persistence.Column"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
+    <fullyQualifiedTypeName name="com.app.core.pojos.Payment"/>
+    <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
 </qualifiedTypeNameHistroy>
