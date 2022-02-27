@@ -1,6 +1,8 @@
 package com.app.core.pojos;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -12,27 +14,21 @@ import lombok.Data;
 @Data
 public class Member extends BaseEntity {
 
-//	@NotEmpty(message = "First Name can't be blank")
-//	@Length(min = 4, max = 20, message = "Invalid First Name length!!!!")
-//	@Column(length = 30)
-//	private String firstName;
-//
-//	@Column(length = 20, unique = true)
-//	@NotEmpty(message = "Last Name can't be blank")
-//	@Length(min = 4, max = 20, message = "Invalid Last Name length!!!!")
-//	private String lastName;
-	
-//	private int mobileNumber;
-//	
-//	@Column(length = 30)
-//	@NotEmpty(message = "location must be supplied")
-//	private String email;
-//	
-//	@Column(length = 30)
-//	@NotEmpty(message = "location must be supplied")
-//	private String password;
-//	
-//	@Column(length = 50)
-//	private String address;
 
+	@ManyToOne
+	@JoinColumn(name="trainer_id",nullable = false)
+	private Trainer trainer;
+	
+	@ManyToOne
+	@JoinColumn(name = "local_admin_id",nullable = false)
+	private LocalAdmin localAdmin;
+	
+	@ManyToOne
+	@JoinColumn(name = "super_admin_id",nullable = false)
+	private SuperAdmin superAdmin;
+	
+	@ManyToOne
+	@JoinColumn(name = "branch",nullable = false)
+	private GymBranch branch;
+	
 }
