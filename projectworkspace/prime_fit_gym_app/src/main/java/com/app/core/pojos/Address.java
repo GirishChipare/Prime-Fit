@@ -1,15 +1,10 @@
 package com.app.core.pojos;
 
 import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@MappedSuperclass
-@Getter
-@Setter
-
+@Data
 public class Address {
 	
 	@Column(length = 20)

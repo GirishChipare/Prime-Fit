@@ -10,8 +10,6 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 
 @MappedSuperclass
@@ -19,7 +17,7 @@ import lombok.Setter;
 //@Setter
 @Data
 
-public class BaseEntity extends Address {
+public class BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;

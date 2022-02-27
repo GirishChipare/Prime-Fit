@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class Batch {
 	
 	@Column(name = "batch_time")
