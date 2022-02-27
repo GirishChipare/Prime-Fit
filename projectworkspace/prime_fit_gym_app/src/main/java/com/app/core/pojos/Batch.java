@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Batch {
+public class Batch extends BaseEntity {
 	
 	@Column(name = "batchid")
 	private int batchId;

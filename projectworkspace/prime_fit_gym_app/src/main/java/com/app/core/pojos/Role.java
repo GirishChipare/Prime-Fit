@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "roles")
+@Table(name = "role")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -20,5 +20,5 @@ public class Role extends BaseEntity{
 	
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20,name="name")
-	private UserRoles userRole;
+	private UserRole userRole;
 }

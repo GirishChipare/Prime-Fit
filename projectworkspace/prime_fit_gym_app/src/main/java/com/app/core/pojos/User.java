@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -40,13 +42,16 @@ public class User extends BaseEntity{
 	    
 	    @Enumerated(EnumType.STRING)
 	    @Column(length = 20)
-	    private Role role;
+	    private UserRole role;
 	    
 	    @Column(length = 20)
 	    private String phone;
 	    
 	    @Column(length = 50)
 		private Address address;
+	    
+//	    @ManyToOne
+//	    @JoinTable
 
 //	    public User() {
 //	        System.out.println("in ctor of "+getClass().getName());

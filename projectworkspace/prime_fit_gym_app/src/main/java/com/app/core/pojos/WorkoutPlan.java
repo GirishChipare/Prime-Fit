@@ -1,7 +1,7 @@
 package com.app.core.pojos;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@Entity
+@Embeddable
 @Table(name = "workout_plan")
 @AllArgsConstructor
 @NoArgsConstructor
