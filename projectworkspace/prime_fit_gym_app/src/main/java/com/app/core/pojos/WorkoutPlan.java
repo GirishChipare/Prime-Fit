@@ -2,25 +2,24 @@ package com.app.core.pojos;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "member")
-//@AllArgsConstructor
-//@NoArgsConstructor
+@Table(name = "workout_plan")
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class WorkoutPlan {
+public class WorkoutPlan extends BaseEntity{
 
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int workoutId;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private int workoutId;
 	
 	@Column(name = "monday")
 	private String mondayExercise;

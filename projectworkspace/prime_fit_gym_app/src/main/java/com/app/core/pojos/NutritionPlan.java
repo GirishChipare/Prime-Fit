@@ -1,16 +1,24 @@
 package com.app.core.pojos;
 
-import javax.annotation.Generated;
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-public class NutritionPlan {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "nutrition_plan")
+public class NutritionPlan extends BaseEntity {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int dietId;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private int dietId;
 	
 	@Column(name = "breakfast")
 	private String breakfast;
@@ -25,8 +33,4 @@ public class NutritionPlan {
 	
 	@Column(name = "meal4")
 	private String meal4;
-	
-	
-	
-
 }
