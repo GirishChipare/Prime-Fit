@@ -1,11 +1,12 @@
 package com.app.core.pojos;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -40,15 +41,20 @@ public class User extends BaseEntity{
 	    @NotEmpty(message = "password must be supplied")
 	    private String password;
 	    
-	    @Enumerated(EnumType.STRING)
-	    @Column(length = 20)
-	    private UserRole role;
+//	    @Enumerated(EnumType.STRING)
+//	    @Column(length = 20)
+//	    private UserRole role;
 	    
 	    @Column(length = 20)
-	    private String phone;
+	    private int phone;
 	    
 	    @Column(length = 50)
 		private Address address;
+	    
+	    @JoinTable(name = "user_roles", 
+	    		joinColumns = @JoinColumn(name = "user_id"), 
+	    		inverseJoinColumns = @JoinColumn(name = "role_id"))
+	    private Set<Role> roles = new HashSet<>();	
 	    
 //	    @ManyToOne
 //	    @JoinTable
