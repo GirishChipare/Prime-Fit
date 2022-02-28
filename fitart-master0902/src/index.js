@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter} from 'react-router-dom';
+import BrowserRouter from 'react-router-dom/BrowserRouter';
+// changed above routing from hashrouter to browser router to replace # from url
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-<HashRouter><App/></HashRouter>,
+<BrowserRouter><App/></BrowserRouter>,
  document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

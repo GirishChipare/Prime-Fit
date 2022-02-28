@@ -8,7 +8,8 @@ import {
     faInstagram
 } from "@fortawesome/free-brands-svg-icons";
 
-const Footer = () => {
+import { Link } from 'react-router-dom';
+ const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
         <footer className="footer">
@@ -30,12 +31,12 @@ const Footer = () => {
                         className="youtube social">
                         <FontAwesomeIcon icon={faYoutube} size="4x" />
                     </a>
-                    <a href="https://www.facebook.com/"
+                    <a href="https://www.facebook.com/Prime-Fit-125463350053201"
                         target='_blank'
                         className="facebook social">
                         <FontAwesomeIcon icon={faFacebook} size="4x" />
                     </a>
-                    <a href="https://www.twitter.com/"
+                    <a href="https://www.twitter.com/PrimeFit8"
                         target='_blank'
                         className="twitter social">
                         <FontAwesomeIcon icon={faTwitter} size="4x" />
@@ -58,7 +59,7 @@ const Footer = () => {
                 <div className="alt-location">
                     <strong className="footer-subheading">Location</strong>
                     <span className="footer-desc">
-                    216, Main Road, Sangli, IN-416416
+                        216, Main Road, Sangli, IN-416416
                         <br />
                         Monday through Thursday (6AM to 8Pm). Friday (6AM to 6Pm)
                     </span>
@@ -79,9 +80,24 @@ const Footer = () => {
                         <small> Weight Loss Program</small>
                     </div>
                     <div className="footer-sub">
-                        <strong className="footer-subheading"><a href=""></a>Privacy Policy</strong>
+                        {/* <strong className="footer-subheading">
+                            <a href="/privacypolicy">Privacy Policy</a></strong> */}
+
+                        
+                         <Link to={"/privacypolicy"} href="/privacypolicy">
+                             <strong className="footer-subheading">Privacy Policy </strong>
+                             </Link>
+                            
+                     
                         <strong className="footer-subheading">Terms of Service</strong>
+
+
                     </div>
+                    {/* <a href="https://www.youtube.com/"
+                        target='_blank'
+                        className="youtube social">
+                        <FontAwesomeIcon icon={faYoutube} size="4x" />
+                    </a> */}
                 </div>
 
                 <span className="footer-subheading footer-copy">&copy;&nbsp;Prime-Fit {currentYear}</span>

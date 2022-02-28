@@ -1624,3 +1624,32 @@ a.twitter {
 a.instagram {
   color: rgb(199, 53, 143);
 }
+
+.privacydiv{
+  height: 100vh;
+  margin-top: -15rem;
+  padding-top: 10rem;
+  background: linear-gradient(to top, rgba(225, 226, 185, 0.726),rgba(8, 8, 8, 0.86));
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  color: #777;
+}
+
+ .privacypolicy{
+  margin-top: -5rem;
+  padding-top: 10rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color: rgb(25, 26, 23);
+  font-weight: lighter;
+  /* font-size:3 rem ;
+  grid-row: 2/2;
+  height: 80%;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;*/
+ }
+

@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+//imported browserrouter for routing in a spa and respctive changes in index,js
 
 import ReviewContextProvider from './context/ReviewContext';
 import TrainerContextProvider from './context/TrainerContext';
@@ -16,6 +17,7 @@ function App() {
   const About = lazy(() => import('./components/About'));
   const IndividualExpert = lazy(() => import('./components/IndividualExpert'));
   const SignUp = lazy(() => import('./components/SignUp'));
+  const PrivacyPolicyScreen= lazy(() => import('./components/PrivacyPolicyScreen'));
   return (
     // <TrainerContextProvider>
     //     <Suspense fallback= {<Lazy/>}>
@@ -38,6 +40,7 @@ function App() {
     <TrainerContextProvider>
       <ReviewContextProvider>
         <Suspense fallback={<Lazy />}>
+        <Router>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/home" component={Home} />
@@ -48,8 +51,10 @@ function App() {
             <Route path='/error' component={ErrorPage} />
             <Route exact path="/staff/:id" component={IndividualExpert} />
             <Route path="/fitarmy" component={FitArmy} />
+            <Route path="/privacypolicy" component={PrivacyPolicyScreen} />
             <Route component={ErrorPage} />
           </Switch>
+          </Router>
         </Suspense>
       </ReviewContextProvider>
     </TrainerContextProvider>
