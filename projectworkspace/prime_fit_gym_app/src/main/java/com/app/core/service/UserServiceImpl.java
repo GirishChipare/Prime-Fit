@@ -24,7 +24,7 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
-	public User registerorUpdateUser(User user) {
+	public User register(User user) {
 		//to register or save the user details 
 		return userRepo.save(user);
 	}
@@ -41,6 +41,12 @@ public class UserServiceImpl implements IUserService{
 		// TODO Auto-generated method stub
 		return userRepo.findById(userId)
 				.orElseThrow(() -> new NoSuchElementException("User by Id "+userId+" not found"));
+	}
+
+	@Override
+	public User updateUser(User user) {
+		
+		return userRepo.save(user);
 	}
 	
 	

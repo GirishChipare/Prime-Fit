@@ -1,15 +1,15 @@
 package com.app.core.dto;
 
 public class AuthenticationResponse {
-	private final String jwt;
+	private final String mesg;
 
-	public AuthenticationResponse(String jwt) {
+	public AuthenticationResponse(String mesg) {
 		super();
-		this.jwt = jwt;
+		this.mesg = mesg;
 	}
 
-	public String getJwt() {
-		return jwt;
+	public String getMesg() {
+		return mesg;
 	}
 	
 	

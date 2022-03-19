@@ -18,15 +18,17 @@ public interface IUserService {
 //	 List<User> getAllLocalAdmins(Role localAdmin);
 
 	// update user
-	// User updateUser(User user);
+	 User updateUser(User user);
 
 	// register new user
-	User registerorUpdateUser(User user);
+	User register(User user);
 
 	// delete user
 	String deleteUser(int userId);
 
 	// get user by id
 	User getUserDetails(int userId);
+	
+	
 
 }
