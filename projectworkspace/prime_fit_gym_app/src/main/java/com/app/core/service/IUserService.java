@@ -21,7 +21,7 @@ public interface IUserService {
 	// User updateUser(User user);
 
 	// register new user
-	User registerorUpdateUser(User userS);
+	User registerorUpdateUser(User user);
 
 	// delete user
 	String deleteUser(int userId);

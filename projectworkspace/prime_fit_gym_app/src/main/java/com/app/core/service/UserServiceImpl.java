@@ -3,11 +3,15 @@ package com.app.core.service;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.app.core.dao.UserRepository;
 import com.app.core.pojos.User;
-
+@Service
+@Transactional
 public class UserServiceImpl implements IUserService{
 
 	@Autowired
