@@ -3,11 +3,15 @@ package com.app.core.service;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.app.core.dao.BatchRepository;
 import com.app.core.pojos.Batch;
-
+@Service
+@Transactional
 public class BatchServiceImpl implements IBatchService {
 	
 	@Autowired
@@ -36,6 +40,7 @@ public class BatchServiceImpl implements IBatchService {
 	@Override
 	public String deleteBatch(int batchId) {
 		// TODO Auto-generated method stub
+		batchRepo.deleteById(batchId);
 		return "Batch with Id "+batchId+" deleted successfully";
 	}
 
