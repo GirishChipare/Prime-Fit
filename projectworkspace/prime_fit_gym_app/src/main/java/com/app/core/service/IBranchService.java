@@ -8,6 +8,9 @@ public interface IBranchService {
 	//get list of all branches
 	List<GymBranch> getAllBranches();
 	
+	//get branch details by id
+		GymBranch getBranchDetails(int branchId);
+	
 	//add a new branch
 	GymBranch addNewBranch(GymBranch branch);
 	
@@ -17,8 +20,7 @@ public interface IBranchService {
 	//delete branch
 	String deleteBranch(int branchId);
 	
-	//get branch details by id
-	GymBranch getBranchDetails(int branchId);
+	
 	
 	
 

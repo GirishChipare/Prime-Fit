@@ -1,11 +1,8 @@
 package com.app.core.pojos;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -49,12 +46,14 @@ public class User extends BaseEntity{
 	    private int phone;
 	    
 	    @Column(length = 50)
+	    @Embedded
 		private Address address;
 	    
-	    @JoinTable(name = "user_roles", 
-	    		joinColumns = @JoinColumn(name = "user_id"), 
-	    		inverseJoinColumns = @JoinColumn(name = "role_id"))
-	    private Set<Role> roles = new HashSet<>();	
+	    @JoinTable(name = "user_roles")
+	    		//joinColumns = @JoinColumn(name = "user_id"), 
+	    		//inverseJoinColumns = @JoinColumn(name = "role_id"))
+	    private UserRole role;
+	   // private Set<Role> roles = new HashSet<>();	
 	    
 //	    @ManyToOne
 //	    @JoinTable
