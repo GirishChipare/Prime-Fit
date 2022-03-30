@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.core.dao.UserRepository;
 import com.app.core.pojos.User;
+import com.app.core.pojos.UserRole;
 @Service
 @Transactional
 public class UserServiceImpl implements IUserService{
@@ -18,9 +19,22 @@ public class UserServiceImpl implements IUserService{
 	private UserRepository userRepo;
 	
 	@Override
-	public List<User> getAllUsers() {
-		//to return all users irrespective of roles
-		return userRepo.findAll();
+	public List<User> getAllMembers() {
+		//to return all members
+		return userRepo.findByRole(UserRole.MEMBER);
+	}
+	
+
+	@Override
+	public List<User> getAllTrainers() {
+		// //to return all trainers
+		return userRepo.findByRole(UserRole.TRAINER);
+	}
+
+	@Override
+	public List<User> getAllLocalAdmins() {
+		////to return all localAdmins
+		return userRepo.findByRole(UserRole.LOCAL_ADMIN);
 	}
 
 	@Override
@@ -48,6 +62,5 @@ public class UserServiceImpl implements IUserService{
 		
 		return userRepo.save(user);
 	}
-	
 	
 }

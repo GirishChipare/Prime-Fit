@@ -3,11 +3,16 @@ package com.app.core.pojos;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,28 +43,30 @@ public class User extends BaseEntity{
 	    @NotEmpty(message = "password must be supplied")
 	    private String password;
 	    
-//	    @Enumerated(EnumType.STRING)
-//	    @Column(length = 20)
-//	    private UserRole role;
+	    @Transient
+		@JsonIgnore
+		private String confirmPassword;
+	    
+
+		@Column(length = 20)
+		private String locality;
+		
+		@Column(length = 20)
+		private String city;
+		
+		@Column(length = 20)
+		private String state;
+		
+		@Column(length = 10)
+		private int zipCode;
 	    
 	    @Column(length = 20)
 	    private int phone;
 	    
-	    @Column(length = 50)
-	    @Embedded
-		private Address address;
-	    
 	    @JoinTable(name = "user_roles")
-	    		//joinColumns = @JoinColumn(name = "user_id"), 
-	    		//inverseJoinColumns = @JoinColumn(name = "role_id"))
-	    private UserRole role;
-	   // private Set<Role> roles = new HashSet<>();	
-	    
-//	    @ManyToOne
-//	    @JoinTable
-
-//	    public User() {
-//	        System.out.println("in ctor of "+getClass().getName());
-//	    }
+	    @Enumerated(EnumType.STRING)
+	    private UserRole role=UserRole.MEMBER;
+	   
+	
 
 }

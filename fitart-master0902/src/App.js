@@ -6,6 +6,7 @@ import ReviewContextProvider from './context/ReviewContext';
 import TrainerContextProvider from './context/TrainerContext';
 import Lazy from './components/Lazy';
 import ErrorPage from './components/ErrorPage';
+import Users from './components/Users';
 
 
 
@@ -18,6 +19,9 @@ function App() {
   const IndividualExpert = lazy(() => import('./components/IndividualExpert'));
   const SignUp = lazy(() => import('./components/SignUp'));
   const PrivacyPolicyScreen= lazy(() => import('./components/PrivacyPolicyScreen'));
+  // const Users = lazy(() => import('./components/Users'));
+ 
+   
   return (
     // <TrainerContextProvider>
     //     <Suspense fallback= {<Lazy/>}>
@@ -37,11 +41,13 @@ function App() {
     //   </Switch>
     //     </Suspense>
     // </TrainerContextProvider>
+    
     <TrainerContextProvider>
       <ReviewContextProvider>
         <Suspense fallback={<Lazy />}>
         <Router>
           <Switch>
+           
             <Route exact path="/" component={Home} />
             <Route path="/home" component={Home} />
             <Route path="/about" component={About} />
@@ -53,6 +59,8 @@ function App() {
             <Route path="/fitarmy" component={FitArmy} />
             <Route path="/privacypolicy" component={PrivacyPolicyScreen} />
             <Route component={ErrorPage} />
+            <Route path="/users" component={Users}/>  
+            {/* <Users /> */}
           </Switch>
           </Router>
         </Suspense>

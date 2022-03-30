@@ -6,7 +6,11 @@ import com.app.core.pojos.User;
 
 public interface IUserService {
 	// getall users of the gym
-	List<User> getAllUsers();
+	List<User> getAllMembers();
+	
+	List<User> getAllTrainers();
+	
+	List<User> getAllLocalAdmins();
 
 	// get all members of the gym
 //	 List<User> getAllMembers(Role member);
