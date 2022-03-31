@@ -1,8 +1,9 @@
 package com.app.core.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.core.pojos.Batch;
+import com.app.core.dto.BranchDTO;
 import com.app.core.pojos.GymBranch;
 import com.app.core.service.IBranchService;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/branch")
+@RequestMapping("/branches")
 public class BranchController {
 	
 	@Autowired
@@ -25,38 +26,41 @@ public class BranchController {
 	
 	public BranchController() {
 		// TODO Auto-generated constructor stub
-	System.out.println("in ctor of "+getClass());
+	System.out.println("in constructor of "+getClass());
 	}
 	
 
-	@GetMapping
-	public List<GymBranch> getAllBranches(){
+	@GetMapping("/branch")
+	public BranchDTO<?> getAllBranches(){
 		System.out.println("in get all batches");
-		return branchService.getAllBranches();
+		return new BranchDTO<>(HttpStatus.OK,"Branches found", branchService.getAllBranches());
 	}
 	
 	@PostMapping("/add")
-	public GymBranch addBatch(@RequestBody GymBranch branch) {
+	public  BranchDTO<?> addBranch(@RequestBody GymBranch branch) {
 		System.out.println("In add batch "+branch);
-		return branchService.addNewBranch(branch);
+		GymBranch b=branchService.addNewBranch(branch);
+		return new BranchDTO<>(HttpStatus.OK,"Branch added successfully", b);
 	}
 	
-	@GetMapping("/{id}")
-	public GymBranch getBatch(@PathVariable int id) {
+	@GetMapping("/branch/{id}")
+	public ResponseEntity<?> getBranch(@PathVariable int id) {
 		System.out.println("In get batch "+id);
-		return branchService.getBranchDetails(id);
+		return new ResponseEntity<>(branchService.getBranchDetails(id),HttpStatus.OK);
 	}
 	
 	@PutMapping("/update")
-	public GymBranch updateBatch(@RequestBody GymBranch branch) {
+	public  BranchDTO<?> updateBranch(@RequestBody GymBranch branch) {
 		System.out.println("in update batch "+branch);
-		return branchService.updateBranch(branch);
+		GymBranch b=branchService.updateBranch(branch);
+		return new BranchDTO<>(HttpStatus.OK,"Branch updated successfully", b);
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public String deleteBatch(@PathVariable int id) {
+	public  BranchDTO<?> deleteBranch(@PathVariable int id) {
 		System.out.println("in delete batch "+id);
-		return branchService.deleteBranch(id);
+		String deleteBranch=branchService.deleteBranch(id);
+		return new BranchDTO<>(HttpStatus.OK, "branch deleted successfully", deleteBranch);
 	}
 
 }

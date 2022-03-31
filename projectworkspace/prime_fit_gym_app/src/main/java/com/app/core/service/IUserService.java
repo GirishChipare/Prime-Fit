@@ -2,6 +2,7 @@ package com.app.core.service;
 
 import java.util.List;
 
+import com.app.core.dto.LoginRequest;
 import com.app.core.pojos.User;
 
 public interface IUserService {
@@ -32,6 +33,8 @@ public interface IUserService {
 
 	// get user by id
 	User getUserDetails(int userId);
+	
+	User authenticateUserLogin(LoginRequest loginRequst);
 	
 	
 

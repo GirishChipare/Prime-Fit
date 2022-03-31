@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.core.dao.UserRepository;
+import com.app.core.dto.LoginRequest;
 import com.app.core.pojos.User;
 import com.app.core.pojos.UserRole;
 @Service
@@ -61,6 +62,13 @@ public class UserServiceImpl implements IUserService{
 	public User updateUser(User user) {
 		
 		return userRepo.save(user);
+	}
+	
+	@Override
+	public User authenticateUserLogin(LoginRequest loginRequst) {
+		
+		return userRepo.validateUser(loginRequst.getEmail(), loginRequst.getPassword())
+							 .orElseThrow(()-> new NoSuchElementException("User Not found "));
 	}
 	
 }

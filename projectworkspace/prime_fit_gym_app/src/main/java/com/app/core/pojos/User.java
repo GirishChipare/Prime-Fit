@@ -65,7 +65,7 @@ public class User extends BaseEntity{
 	    
 	    @JoinTable(name = "user_roles")
 	    @Enumerated(EnumType.STRING)
-	    private UserRole role=UserRole.MEMBER;
+	    private UserRole role;
 	   
 	
 

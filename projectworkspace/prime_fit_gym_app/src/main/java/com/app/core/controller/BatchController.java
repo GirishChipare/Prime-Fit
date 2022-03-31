@@ -1,8 +1,9 @@
 package com.app.core.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.core.dto.BatchDTO;
 import com.app.core.pojos.Batch;
 import com.app.core.service.IBatchService;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/batches")
 public class BatchController {
@@ -24,37 +26,40 @@ public class BatchController {
 	
 	public BatchController() {
 		// TODO Auto-generated constructor stub
-		System.out.println("In ctor of "+getClass());
+		System.out.println("In constructor of "+getClass());
 	}
 	
-	@GetMapping
-	public List<Batch> getAllBatches(){
+	@GetMapping("/batch")
+	public BatchDTO<?> getAllBatches(){
 		System.out.println("in get all batches");
-		return batchService.getAllBatches();
+		return  new BatchDTO<>(HttpStatus.OK,"Batches Found ", batchService.getAllBatches());
 	}
 	
 	@PostMapping("/add")
-	public Batch addBatch(@RequestBody Batch batch) {
+	public  BatchDTO<?> addBatch(@RequestBody Batch batch) {
 		System.out.println("In add batch "+batch);
-		return batchService.addNewBatch(batch);
+		Batch b=batchService.addNewBatch(batch);
+		return new BatchDTO<>(HttpStatus.OK,"Batch added successfully", b);
 	}
 	
-	@GetMapping("/{id}")
-	public Batch getBatch(@PathVariable int id) {
+	@GetMapping("/batch/{id}")
+	public ResponseEntity<?> getBatch(@PathVariable int id) {
 		System.out.println("In get batch "+id);
-		return batchService.getBatchDetails(id);
+		return  new ResponseEntity<>(batchService.getBatchDetails(id),HttpStatus.OK);
 	}
 	
 	@PutMapping("/update")
-	public Batch updateBatch(@RequestBody Batch batch) {
+	public  BatchDTO<?> updateBatch(@RequestBody Batch batch) {
 		System.out.println("in update batch "+batch);
-		return batchService.updateBatch(batch);
+		Batch b= batchService.updateBatch(batch);
+		return new BatchDTO<>(HttpStatus.OK,"Batch updated successfully", b);
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public String deleteBatch(@PathVariable int id) {
+	public  BatchDTO<?> deleteBatch(@PathVariable int id) {
 		System.out.println("in delete batch "+id);
-		return batchService.deleteBatch(id);
+		String b=batchService.deleteBatch(id);
+		return new BatchDTO<>(HttpStatus.OK,"Batch deleted successfully", b);
 	}
 	
 	

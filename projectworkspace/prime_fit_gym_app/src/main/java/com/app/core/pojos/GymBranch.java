@@ -23,7 +23,20 @@ public class GymBranch extends BaseEntity{
 	@Column(name = "branch_name")
 	private String branchName;
 	
-	private Address address;
+	@Column(length = 20)
+	private String locality;
+	
+	@Column(length = 20)
+	private String city;
+	
+	@Column(length = 20)
+	private String state;
+	
+	@Column(length = 10)
+	private int zipCode;
+	
+	@Column(length = 20)
+    private int phone;
 	
 
 }

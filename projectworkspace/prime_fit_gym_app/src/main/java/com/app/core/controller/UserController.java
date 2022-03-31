@@ -1,7 +1,5 @@
 package com.app.core.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.core.dto.LoginRequest;
+import com.app.core.dto.LoginResponse;
 import com.app.core.dto.ResponseDTO;
 import com.app.core.pojos.User;
+import com.app.core.pojos.UserRole;
 import com.app.core.service.IUserService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -34,24 +35,24 @@ public class UserController {
 
 	// adding request handlig method to send all the Member-users to the caller
 	@GetMapping("/members")
-	public List<User> getAllMembers() {
-		System.out.println("in get all Users");
-		return userService.getAllMembers();
+	public ResponseDTO<?> getAllMembers() {
+		System.out.println("in get all Members");
+		return new ResponseDTO<>(HttpStatus.OK,"Users Found ",userService.getAllMembers());
 	}
 
 	@GetMapping("/trainers")
-	public List<User> getAllTrainers() {
-		System.out.println("in get all Users");
-		return userService.getAllTrainers();
+	public ResponseDTO<?> getAllTrainers() {
+		System.out.println("in get all Trainers");
+		return new ResponseDTO<>(HttpStatus.OK,"Trainers found",userService.getAllTrainers());
 	}
 
 	@GetMapping("/localadmins")
-	public List<User> getAllLocalAdmins() {
-		System.out.println("in get all Users");
-		return userService.getAllLocalAdmins();
+	public ResponseDTO<?> getAllLocalAdmins() {
+		System.out.println("in get all LocalAdmins");
+		return new ResponseDTO<>(HttpStatus.OK,"Local-Admins found",userService.getAllLocalAdmins());
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/user/{id}")
 	public ResponseEntity<?> getUser(@PathVariable int id) {
 		System.out.println("In get User details " + id);
 		return new ResponseEntity<>(userService.getUserDetails(id), HttpStatus.OK);
@@ -76,6 +77,16 @@ public class UserController {
 		System.out.println("in delete user " + id);
 		String deleteUser = userService.deleteUser(id);
 		return new ResponseDTO<>(HttpStatus.OK, "User deleted successfully", deleteUser);
+	}
+	
+	@PostMapping("/signin")
+	public LoginResponse<?> authenticateUser(@RequestBody LoginRequest request){
+		System.out.println("in user authentication "+request);
+		User user = userService.authenticateUserLogin(request);
+		UserRole role=user.getRole();
+		System.out.println("User "+user+ " "+" Role "+role);
+		return new LoginResponse<>(HttpStatus.OK,"user found ",user,role);
+		
 	}
 
 }
