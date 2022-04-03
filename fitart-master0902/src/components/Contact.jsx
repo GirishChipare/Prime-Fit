@@ -8,7 +8,7 @@ const Contact = () => {
             <Navbar />
             <section className="contact">
                 <h1 className="heading-section">Contact</h1>
-                <div className="container">
+                <div className="container1">
                     <article className="contact-section">
                         <strong className="contact-heading">Location</strong>
                         <p className="contact-paragraph">

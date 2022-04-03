@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+const Logout = () => {
     const [mobile, SetMobile] = useState(true);
 
 
@@ -17,7 +17,7 @@ const Navbar = () => {
             </button>
 
             <div className={`mobile mobile-${mobile}`}>
-                <NavLink exact to="/" activeClassName="current" className="navbar-link">
+                {/* <NavLink exact to="/" activeClassName="current" className="navbar-link">
                     Home
                 </NavLink>
 
@@ -35,12 +35,12 @@ const Navbar = () => {
 
                 <NavLink to="/contact" activeClassName="current" className="navbar-link">
                     Contact
-                </NavLink>
+                </NavLink> */}
 
-                <NavLink to="/login" className="navbar-link join-now">Join Now</NavLink>
+                <NavLink to="/" className="navbar-link join-now">Log Out</NavLink>
             </div>
         </nav>
     )
 }
 
-export default Navbar;
+export default Logout;

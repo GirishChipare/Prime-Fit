@@ -9,40 +9,35 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 import { Link } from 'react-router-dom';
- const Footer = () => {
+const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
         <footer className="footer">
             <div className="footer-container">
                 <strong className="footer-subheading">
-                    JOIN US NOW
-
+                    <Link to={"/login"} href="/login">
+                    <strong className="footer-subheading">JOIN US NOW </strong>
+                    </Link>
+                    
                 </strong>
-                {/* <div className="footer-icons">
-                    <FaFacebook className="footer-icon" />
-                    <FaInstagram className="footer-icon" />
-                    <FaTwitter className="footer-icon" />
-                    <FaSnapchat className="footer-icon" />
-                </div> */}
-
                 <div class="social-container">
                     <a href="https://www.youtube.com/"
-                        target='_blank'
+                        target='blank'
                         className="youtube social">
                         <FontAwesomeIcon icon={faYoutube} size="4x" />
                     </a>
                     <a href="https://www.facebook.com/Prime-Fit-125463350053201"
-                        target='_blank'
+                        target='blank'
                         className="facebook social">
                         <FontAwesomeIcon icon={faFacebook} size="4x" />
                     </a>
                     <a href="https://www.twitter.com/PrimeFit8"
-                        target='_blank'
+                        target='blank'
                         className="twitter social">
                         <FontAwesomeIcon icon={faTwitter} size="4x" />
                     </a>
                     <a href="https://www.instagram.com/prime_fit8"
-                        target='_blank'
+                        target='blank'
                         className="instagram social">
                         <FontAwesomeIcon icon={faInstagram} size="4x" />
                     </a>
@@ -83,21 +78,15 @@ import { Link } from 'react-router-dom';
                         {/* <strong className="footer-subheading">
                             <a href="/privacypolicy">Privacy Policy</a></strong> */}
 
-                        
-                         <Link to={"/privacypolicy"} href="/privacypolicy">
-                             <strong className="footer-subheading">Privacy Policy </strong>
-                             </Link>
-                            
-                     
-                        <strong className="footer-subheading">Terms of Service</strong>
-
+                        <Link to={"/privacypolicy"} href="/privacypolicy">
+                            <strong className="footer-subheading">Privacy Policy </strong>
+                        </Link>
+                        <Link to={"/termsofservice"} href="/termsofservice">
+                            <strong className="footer-subheading">Terms of Service </strong>
+                        </Link>
 
                     </div>
-                    {/* <a href="https://www.youtube.com/"
-                        target='_blank'
-                        className="youtube social">
-                        <FontAwesomeIcon icon={faYoutube} size="4x" />
-                    </a> */}
+                    
                 </div>
 
                 <span className="footer-subheading footer-copy">&copy;&nbsp;Prime-Fit {currentYear}</span>

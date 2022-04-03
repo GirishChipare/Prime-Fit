@@ -7,8 +7,9 @@ const PrivacyPolicyScreen = () => {
 
         <div className="privacydiv">
             <Navbar />
+            
             <div className="privacypolicy">
-                <h1><b>Privacy Policy :</b> </h1>
+                <h1 className="privacyheading"><b> Privacy Policy </b> </h1>
                 <h4>Personal Information</h4>
                 <p>
                     MyGreen Mart (“MYGREEN MART”) is the licensed owner of

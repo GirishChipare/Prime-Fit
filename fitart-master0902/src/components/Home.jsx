@@ -16,7 +16,7 @@ const Home = () => {
                     <img src={hero} alt="man lifting weights" />
                     Your browser does not support the video. Sorry for the inconvenience.
                 </video>
-                <div className="hero-heading">
+                <div className="container">
                     <h2 className="heading__header--sub">
                         <span className="header-logo">Prime-Fit</span><br />Everyone Needs a Tune-up
                     </h2>
