@@ -13,7 +13,7 @@ public interface IPackageService {
 	Package addNewPackage(Package p);
 	
 	//edit package details
-	Package updatePackage(Package p);
+	Package updatePackage(Package p,int id);
 	
 	//delete package
 	String deletePackage(int packageId);

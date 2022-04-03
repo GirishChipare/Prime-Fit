@@ -49,10 +49,10 @@ public class PackageController {
 	 }
 	 
 	 
-	 @PutMapping("/update")
-	 public PackageDTO<?> updatePackage(@RequestBody Package p) {
-		 System.out.println("in update package");
-		 Package pp=packageService.updatePackage(p);
+	 @PutMapping("/update/{id}")
+	 public PackageDTO<?> updatePackage(@RequestBody Package p,@PathVariable int id) {
+		 System.out.println("in update package"+p+ " id "+id);
+		 Package pp=packageService.updatePackage(p,id);
 		 return new PackageDTO<>(HttpStatus.OK, "package updated successfully", pp);
 	 }
 	 

@@ -15,7 +15,7 @@ public interface IBranchService {
 	GymBranch addNewBranch(GymBranch branch);
 	
 	//update branch details
-	GymBranch updateBranch(GymBranch branch);
+	GymBranch updateBranch(GymBranch branch,int id);
 	
 	//delete branch
 	String deleteBranch(int branchId);

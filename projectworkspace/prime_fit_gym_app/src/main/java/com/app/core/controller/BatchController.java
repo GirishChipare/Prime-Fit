@@ -1,5 +1,7 @@
 package com.app.core.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.core.dto.BatchDTO;
+import com.app.core.dto.ResponseDTO;
 import com.app.core.pojos.Batch;
+import com.app.core.pojos.User;
 import com.app.core.service.IBatchService;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -35,10 +39,10 @@ public class BatchController {
 		return  new BatchDTO<>(HttpStatus.OK,"Batches Found ", batchService.getAllBatches());
 	}
 	
-	@PostMapping("/add")
-	public  BatchDTO<?> addBatch(@RequestBody Batch batch) {
-		System.out.println("In add batch "+batch);
-		Batch b=batchService.addNewBatch(batch);
+	@PostMapping("/add/{branchBranchId}")
+	public  BatchDTO<?> addBatch(@RequestBody Batch batch,@PathVariable int branchBranchId) {
+		System.out.println("In add batch "+batch+ " batchBranchId "+branchBranchId);
+		Batch b=batchService.addNewBatch(batch,branchBranchId);
 		return new BatchDTO<>(HttpStatus.OK,"Batch added successfully", b);
 	}
 	
@@ -48,10 +52,10 @@ public class BatchController {
 		return  new ResponseEntity<>(batchService.getBatchDetails(id),HttpStatus.OK);
 	}
 	
-	@PutMapping("/update")
-	public  BatchDTO<?> updateBatch(@RequestBody Batch batch) {
-		System.out.println("in update batch "+batch);
-		Batch b= batchService.updateBatch(batch);
+	@PutMapping("/update/{id}")
+	public  BatchDTO<?> updateBatch(@RequestBody Batch batch,@PathVariable int id) { 
+		System.out.println("in update batch "+batch+" id "+id);
+		Batch b= batchService.updateBatch(batch,id);
 		return new BatchDTO<>(HttpStatus.OK,"Batch updated successfully", b);
 	}
 
@@ -60,6 +64,15 @@ public class BatchController {
 		System.out.println("in delete batch "+id);
 		String b=batchService.deleteBatch(id);
 		return new BatchDTO<>(HttpStatus.OK,"Batch deleted successfully", b);
+	}
+	
+	@GetMapping("/batchesbyid/{id}")
+	public ResponseDTO<?> getBatchesByBranchId(@PathVariable int id){
+		System.out.println("In get Batches by branch id "+id);
+		List<Batch> batches=batchService.getBatchesByBranchId(id);
+		return new ResponseDTO<>(HttpStatus.OK,"All users of the branch id "+id,batches );
+		
+		
 	}
 	
 	

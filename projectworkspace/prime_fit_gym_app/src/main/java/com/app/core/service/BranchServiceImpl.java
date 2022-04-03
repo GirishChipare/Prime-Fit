@@ -31,9 +31,17 @@ public class BranchServiceImpl implements IBranchService{
 	}
 
 	@Override
-	public GymBranch updateBranch(GymBranch branch) {
+	public GymBranch updateBranch(GymBranch branch,int id) {
 		// TODO Auto-generated method stub
-		return branchRepo.save(branch);
+		GymBranch b=branchRepo.findById(id).get();
+		b.setBranchName(branch.getBranchName());
+		b.setCity(branch.getCity());
+		b.setLocality(branch.getLocality());
+		b.setPhone(branch.getPhone());
+		b.setState(branch.getState());
+		b.setZipCode(branch.getZipCode());	
+		return branchRepo.save(b);
+		
 	}
 
 	@Override

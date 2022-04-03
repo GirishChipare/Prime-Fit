@@ -49,10 +49,10 @@ public class BranchController {
 		return new ResponseEntity<>(branchService.getBranchDetails(id),HttpStatus.OK);
 	}
 	
-	@PutMapping("/update")
-	public  BranchDTO<?> updateBranch(@RequestBody GymBranch branch) {
-		System.out.println("in update batch "+branch);
-		GymBranch b=branchService.updateBranch(branch);
+	@PutMapping("/update/{id}")
+	public  BranchDTO<?> updateBranch(@RequestBody GymBranch branch,@PathVariable int id) {
+		System.out.println("in update batch "+branch+ " id "+id);
+		GymBranch b=branchService.updateBranch(branch,id);
 		return new BranchDTO<>(HttpStatus.OK,"Branch updated successfully", b);
 	}
 

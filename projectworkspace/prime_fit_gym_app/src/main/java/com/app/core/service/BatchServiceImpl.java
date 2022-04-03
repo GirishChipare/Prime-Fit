@@ -9,13 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.core.dao.BatchRepository;
+import com.app.core.dao.GymBranchRepository;
 import com.app.core.pojos.Batch;
+import com.app.core.pojos.GymBranch;
 @Service
 @Transactional
 public class BatchServiceImpl implements IBatchService {
 	
 	@Autowired
 	private BatchRepository batchRepo;
+	
+	@Autowired
+	private GymBranchRepository branchRepo;
 	
 
 	@Override
@@ -25,15 +30,21 @@ public class BatchServiceImpl implements IBatchService {
 	}
 
 	@Override
-	public Batch addNewBatch(Batch batch) {
+	public Batch addNewBatch(Batch batch,int branchBranchId) {
 		// TODO Auto-generated method stub
+		GymBranch b=branchRepo.findById(branchBranchId).get();
+		batch.setBranch(b);		
 		return batchRepo.save(batch);
 	}
 
 	@Override
-	public Batch updateBatch(Batch batch) {
+	public Batch updateBatch(Batch batch,int id) {
 		// TODO Auto-generated method stub
-		return batchRepo.save(batch);
+		Batch b=batchRepo.findById(id).get();
+		b.setBatchTime(batch.getBatchTime());
+		b.setBatchType(batch.getBatchType());
+		
+		return batchRepo.save(b);
 		
 	}
 
@@ -49,6 +60,14 @@ public class BatchServiceImpl implements IBatchService {
 		// TODO Auto-generated method stub
 		return batchRepo.findById(batchId)
 				.orElseThrow(()-> new NoSuchElementException("Batch with id "+batchId+ "not found"));
+	}
+
+	@Override
+	public List<Batch> getBatchesByBranchId(int id) {
+		// TODO Auto-generated method stub
+		GymBranch branch= branchRepo.findById(id).get();
+		
+		return batchRepo.getBatchByBranchId(branch);
 	}
 
 }

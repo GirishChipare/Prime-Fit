@@ -2,8 +2,11 @@ package com.app.core.service;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import com.app.core.dto.LoginRequest;
 import com.app.core.pojos.User;
+import com.app.core.pojos.UserRole;
 
 public interface IUserService {
 	// getall users of the gym
@@ -26,7 +29,8 @@ public interface IUserService {
 	 User updateUser(User user);
 
 	// register new user
-	User register(User user);
+	User register(User user, int userBranchId);
+//	 User register(User user);
 
 	// delete user
 	String deleteUser(int userId);
@@ -35,6 +39,8 @@ public interface IUserService {
 	User getUserDetails(int userId);
 	
 	User authenticateUserLogin(LoginRequest loginRequst);
+	
+	List<User> getUserByBranchId( UserRole role, int id);
 	
 	
 

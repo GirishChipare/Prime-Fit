@@ -32,9 +32,13 @@ public class PackageServiceImpl implements IPackageService {
 	}
 
 	@Override
-	public Package updatePackage(Package p) {
+	public Package updatePackage(Package p,int id) {
 		// TODO Auto-generated method stub
-		return packageRepo.save(p);
+		Package pack=packageRepo.getById(id);
+		pack.setPackageName(p.getPackageName());
+		pack.setPackagePrice(p.getPackagePrice());
+		pack.setPackageDescription(p.getPackageDescription());
+		return packageRepo.save(pack);
 	}
 
 	@Override

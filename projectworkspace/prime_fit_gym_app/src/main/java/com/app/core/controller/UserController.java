@@ -1,5 +1,7 @@
 package com.app.core.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -58,14 +60,21 @@ public class UserController {
 		return new ResponseEntity<>(userService.getUserDetails(id), HttpStatus.OK);
 	}
 
-	@PostMapping("/add")
-	public ResponseDTO<?> addUser(@RequestBody User u) {
-		System.out.println("in Add users" + u);
-		User newUser = userService.register(u);
+	@PostMapping("/add/{userBranchId}")
+	public ResponseDTO<?> addUser(@RequestBody User u,@PathVariable int userBranchId) {
+		System.out.println("in Add users" + u + " userBranchId "+ userBranchId);
+		User newUser = userService.register(u,userBranchId);
 		return new ResponseDTO<>(HttpStatus.OK, "User Added Successfully", newUser);
 	}
+//	
+//	@PostMapping("/add")
+//	public ResponseDTO<?> addUser(@RequestBody User u) {
+//		System.out.println("in Add users" + u );
+//		User newUser = userService.register(u);
+//		return new ResponseDTO<>(HttpStatus.OK, "User Added Successfully", newUser);
+//	}
 
-	@PutMapping("/update")
+	@PutMapping("/update/{id}")
 	public ResponseDTO<?> updateUser(@RequestBody User u) {
 		System.out.println("In update user" + u);
 		User user = userService.updateUser(u);
@@ -86,6 +95,15 @@ public class UserController {
 		UserRole role=user.getRole();
 		System.out.println("User "+user+ " "+" Role "+role);
 		return new LoginResponse<>(HttpStatus.OK,"user found ",user,role);
+		
+	}
+	
+	@PostMapping("/usersbyid/{id}")
+	public ResponseDTO<?> getUsersByBranchId(@RequestBody User u,@PathVariable int id){
+		System.out.println("In get Users by branch id "+id+ "Role "+u.getRole());
+		List<User> users=userService.getUserByBranchId(u.getRole(), id);
+		return new ResponseDTO<>(HttpStatus.OK,"All users of the branch id "+id ,users);
+		
 		
 	}
 
