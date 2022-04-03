@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.core.dto.LoginRequest;
 import com.app.core.dto.LoginResponse;
 import com.app.core.dto.ResponseDTO;
+import com.app.core.pojos.GymBranch;
 import com.app.core.pojos.User;
 import com.app.core.pojos.UserRole;
 import com.app.core.service.IUserService;
@@ -73,11 +74,12 @@ public class UserController {
 //		User newUser = userService.register(u);
 //		return new ResponseDTO<>(HttpStatus.OK, "User Added Successfully", newUser);
 //	}
-
+/////////////////////////////////////////////////////
 	@PutMapping("/update/{id}")
-	public ResponseDTO<?> updateUser(@RequestBody User u) {
-		System.out.println("In update user" + u);
-		User user = userService.updateUser(u);
+	public ResponseDTO<?> updateUser(@RequestBody User u,@PathVariable int id) {
+		System.out.println("In update user" + u+ " id "+id);
+		
+		User user = userService.updateUser(u,id);
 		return new ResponseDTO<>(HttpStatus.OK, "user updated successfully", user);
 	}
 
@@ -106,5 +108,10 @@ public class UserController {
 		
 		
 	}
-
+//	@GetMapping("/branchmembers/{id}")
+//	public ResponseDTO<?>getMyBranchUsers(@RequestBody User u,@PathVariable int id){
+//		System.out.println("In MyBranch Users "+u + " id "+id);
+//		List<User> users=userService.getMyBranchUsers(u.)
+//		return null;
+//	}
 }

@@ -11,10 +11,10 @@ const  AdminPage=()=> {
   console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
   console.log(isSignin.user);
 
-  // if(isSignin.status === false){
-  //   alert('please signin first!!')
-  //   history.push('/login')
-  // }
+  if(isSignin.status === false){
+    alert('please signin first!!')
+    history.push('/login')
+  }
   return (
     <div className="privacydiv">
         <Logout/>
@@ -44,23 +44,6 @@ const  AdminPage=()=> {
         <hr/>
         <hr/>
         <hr/>
-
-       
-        
-
-        
-
-
-{/* <button type="button" class="btn btn-primary"> <Link to="/allmembers"> Members </Link></button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>
-
-<button type="button" class="btn btn-link">Link</button> */}
     </div>
   )
 }

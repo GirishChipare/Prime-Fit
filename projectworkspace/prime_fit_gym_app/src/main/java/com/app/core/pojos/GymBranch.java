@@ -47,32 +47,32 @@ public class GymBranch extends BaseEntity{
 	@Column(length = 20)
     private int phone;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "branch", cascade = CascadeType.ALL,orphanRemoval = true)
-	private List<User> users=new ArrayList<>();
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "branch" ,cascade = CascadeType.ALL,orphanRemoval = true)
-	private List<Batch> batches=new ArrayList<>();
-
-	public void addUser(User u) {
-		users.add(u);
-		u.setBranch(this);
-	}
-	
-	public void removeUser(User u) {
-		users.remove(u);
-		u.setBranch(null);
-	}
-	
-	public void addBatch(Batch b) {
-		batches.add(b);
-		b.setBranch(this);
-	}
-	
-	public void removeBatch(Batch b) {
-		batches.remove(b);
-		b.setBranch(null);
-	}
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "branch", cascade = CascadeType.ALL,orphanRemoval = true)
+//	private List<User> users=new ArrayList<>();
+//	
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "branch" ,cascade = CascadeType.ALL,orphanRemoval = true)
+//	private List<Batch> batches=new ArrayList<>();
+//
+//	public void addUser(User u) {
+//		users.add(u);
+//		u.setBranch(this);
+//	}
+//	
+//	public void removeUser(User u) {
+//		users.remove(u);
+//		u.setBranch(null);
+//	}
+//	
+//	public void addBatch(Batch b) {
+//		batches.add(b);
+//		b.setBranch(this);
+//	}
+//	
+//	public void removeBatch(Batch b) {
+//		batches.remove(b);
+//		b.setBranch(null);
+//	}
 
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 import { url } from "../../common/constant";
 import { Link,useHistory } from "react-router-dom";
@@ -16,17 +16,28 @@ const UpdateBatch = () => {
     const history = useHistory();
 
     
+
+
+    useEffect(() => {
+        console.log("User component is mounted");
+        setbatchTime(batchData.batchTime);
+    
+    } , []);
+
+    console.log(batchData);
+    console.log("xxxxxxx");
+
 console.log(batchData);
     const handleUpdate = () => {
-        if (batchType === '' || batchTime === '') {
-            alert("fields cannot be empty"); 
-          } else {
+        // if (batchType === '' || batchTime === '') {
+        //     alert("fields cannot be empty"); 
+        //   } else {
 
 
         const data={
-            id:id,
-            batchType:batchType,
-            batchTime:batchTime
+            "id":batchData.id,
+            "batchType":batchData.batchType,
+            "batchTime":batchTime
 
         }
         setId(batchData.id);
@@ -34,12 +45,12 @@ console.log(batchData);
             const result = response.data;
             if(result.status==="OK"){
                 alert("Batch Updated");
-                history.push("/allbatches");
+                history.push("/localadminpage");
             }else{
                 alert(" Batch not updated");
             }
         })
-    }
+    // }
 
     }
 
@@ -55,14 +66,15 @@ console.log(batchData);
             <div className="col-md-6">
                 <label htmlFor="">Batch Type</label>
                 <input type="text" className="form-control"
-                defaultValue={batchData.batchType}
+                value={batchData.batchType}
                 onChange={(e) => {setbatchType(e.target.value)}}
-                required/>
+                required
+                readOnly/>
             </div>
             <div className="col-md-6">
                 <label htmlFor="">Batch Time</label>
                 <input type="time" className="form-control"
-                defaultValue={batchData.batchTime}
+                value={batchTime}
                 onChange={(e)=>{setbatchTime(e.target.value)}}
                 required/>
             </div>

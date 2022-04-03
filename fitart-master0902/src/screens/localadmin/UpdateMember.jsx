@@ -19,7 +19,7 @@ const UpdateMember = () => {
     const [phone, setPhone] = useState(0);
     const [branch, setBranch] = useState(0);
     const location = useLocation();
-    const memberData = location.state.members;
+    const memberData = location.state.members; 
     const history = useHistory();
 
     
@@ -27,48 +27,36 @@ console.log(memberData);
 console.log("xxxxxxx");
 
     const handleUpdate = () => {
-        if (firstName === "" || lastName === "" || email === "" || locality === "" || city === "" || state === "" || zipCode === 0 || phone === 0 || branch === 0) {    
-            alert("fields cannot be empty"); 
-          } else {
 
-    // setFirstName(memberData.firstName);
-    // setLastName(memberData.lastName);
-    // setEmail(memberData.email);
-    // setLocality(memberData.locality);
-    // setCity(memberData.city);
-    // setState(memberData.state);
-    // setZipCode(memberData.zipCode);
-    // setPhone(memberData.phone);
-    // setId(memberData.id);
-       
-        const data={
-
-            id:id,
-            firstName:firstName,
-            lastName:lastName,
-            email:email,
-            locality:locality,
-            city:city,
-            state:state,
-            zipCode:zipCode,
-            phone:phone,
-            branch:branch
+        // if (firstName === '' || lastName === '' || email === '' || locality === '' || city === '' || state === '' || zipCode === '' || phone === '' || branch === '') {
+        //     alert("fields cannot be empty");
+        //   } else {
+         const data={
+            "id":memberData.id,
+            "firstName":memberData.firstName,
+            "lastName":memberData.lastName,
+            "email":memberData.email,
+            "locality":memberData.locality,
+            "city":memberData.city,
+            "state":memberData.state,
+            "zipCode":memberData.zipCode,
+            "phone":memberData.phone,
+            "branch":memberData.branch 
 
         }
         setId(memberData.id);
-        axios.put(url+"/users/update/"+memberData.id,data).then((response) => {
+        axios.put(url+"/users/update/"+branch,data).then((response) => {
             const result = response.data;
             if(result.status==="OK"){
                 alert("Member Updated");
-                history.push("/mymembers");
+                history.push("/localadminpage");
             }else{
                 alert(" Member not updated");
             }
-        })
+        }) 
 
     }
-}
-
+// }
 
     return(
         <div class="privacydiv">
@@ -82,7 +70,7 @@ console.log("xxxxxxx");
             <div className="col-md-6">
                 <label htmlFor="">First Name</label>
                 <input type="text" className="form-control"
-                placeholder={memberData.lastName}
+                placeholder={memberData.firstName}
                 onChange={(e) => {setFirstName(e.target.value)}}
                 required
                 readOnly/>
@@ -143,23 +131,24 @@ console.log("xxxxxxx");
                 required
                 readOnly/>
             </div>
-            {/* <div className="col-md-6">
+            <div className="col-md-6">
                 <label htmlFor="">Branch</label>
                 <input type="text" className="form-control"
-                placeholder={memberData.branch}
+                placeholder={memberData.branch.id}
                 onChange={(e)=>{setBranch(e.target.value)}}
-                required/>
-            </div> */}
+                required 
+                />
+            </div>
 <hr/>
 <hr/>
 <hr/>
 
             
             <div className="mb-3">
-                <button className="btn btn-primary" onClick={handleUpdate}>Update</button>
+                <button className="btn btn-primary" onClick={handleUpdate}>Update</button>&nbsp;&nbsp; 
             
-            <Link to="/mymembers">
-               &nbsp;&nbsp; <button className="btn btn-primary">Back</button>
+            <Link to="/localadminpage">
+               <button className="btn btn-primary">Back</button>
             </Link>
             </div>
         </div>

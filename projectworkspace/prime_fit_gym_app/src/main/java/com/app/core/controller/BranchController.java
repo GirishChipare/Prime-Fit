@@ -45,9 +45,10 @@ public class BranchController {
 	
 	@GetMapping("/branch/{id}")
 	public ResponseEntity<?> getBranch(@PathVariable int id) {
-		System.out.println("In get batch "+id);
+		System.out.println("In get branch "+id);
 		return new ResponseEntity<>(branchService.getBranchDetails(id),HttpStatus.OK);
 	}
+	///////////////////////////////////////////////////
 	
 	@PutMapping("/update/{id}")
 	public  BranchDTO<?> updateBranch(@RequestBody GymBranch branch,@PathVariable int id) {

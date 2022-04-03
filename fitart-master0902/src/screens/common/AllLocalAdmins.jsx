@@ -5,7 +5,6 @@ import axios from "axios";
 import { url } from "../../common/constant";
 //import $ from "jquery";
 import Logout from '../../screens/common/Logout';
-// import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 //import { useSelector } from "react-redux";
@@ -67,10 +66,6 @@ const AllLocalAdmins = () => {
              <Link to="/addlocaladmin" className="btn btn-warning"> Add Local-Admin </Link>
              
             <h1 align="center">All Local-Admins</h1> 
-           
-
-            
-
             <table className="table">
                 <thead class="thead-dark">
                 
@@ -83,7 +78,7 @@ const AllLocalAdmins = () => {
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody id="myTable">
+                <tbody id="myTable"> 
                     {
                         admins.length >= 1 ? admins.map(admin => {
                             return(
@@ -96,9 +91,9 @@ const AllLocalAdmins = () => {
                                     <td>
                                         <button type="button" class="btn btn-danger" onClick={()=>{deleteAdmin(admin)}}>
                                            Delete
-                                        </button>
+                                        </button>&nbsp;&nbsp;
                                         <button type="button" class="btn btn-light" onClick={()=>{
-                                 history.push('/updatelocaladmin', {admins:admin})
+                                 history.push('/updatelocaladmin', {admins:admin}) 
                                 }}>
                                            Edit
                                         </button>

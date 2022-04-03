@@ -12,11 +12,11 @@ const  LocalAdminPage=()=> {
 
   console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
   console.log(isSignin.user);
-
-  // if(isSignin.status === false){
-  //   alert('please signin first!!')
-  //   history.push('/login')
-  // }
+  // console.log("yyyyy"+isSignin.user.branch.id);
+  if(isSignin.status === false){
+    alert('please signin first!!')
+    history.push('/login')
+  }
   return (
     <div className="privacydiv">
         <Logout/>
@@ -31,18 +31,25 @@ const  LocalAdminPage=()=> {
         <hr/>
 
         
-        <Link to="/mymembers"> <a className="block" href=" ">Members</a> </Link>
+        {/* <Link to="/mymembers"> <a className="block" href=" ">Members</a> </Link>
 
-        <Link to="/mytrainers"> <a className="block" href=" ">Trainers</a> </Link>
+        <Link to="/mytrainers"> <a className="block" href=" ">Trainers</a> </Link> */}
+
+        {/* <Link to="/mybranchpage"> */}
+        <button className="block"
+        onClick={()=>{history.push('/mybranchpage',{branchId:isSignin.user.branch.id})}}>Branch Page
+        </button>
+        {/* <a className="block" href="/mybranchpage">Branch Page</a>  */}
+        {/* </Link> */}
 
         <Link to="/brancheslist"> <a className="block" href=" ">Branches</a> </Link>
 
         <Link to="/packageslist"> <a className="block" href=" ">Packages</a> </Link>
 
-        <Link to="/batches"> <a className="block" href=" ">Batches</a> </Link>
+        {/* <Link to="/batches"> <a className="block" href=" ">Batches</a> </Link> */}
 
         <hr/>
-        <hr/>
+        <hr/> 
         <hr/>
         
         {/* <div className="container py-4" align="right">

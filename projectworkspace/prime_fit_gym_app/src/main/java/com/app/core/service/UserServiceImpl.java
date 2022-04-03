@@ -72,9 +72,13 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
-	public User updateUser(User user) {
+	public User updateUser(User user,int id) {
+		GymBranch b=gymRepo.findById(id).get();
+		User u1=userRepo.findById(user.getId()).get();
 		
-		return userRepo.save(user);
+		u1.setBranch(b);
+		
+		return userRepo.save(u1);
 	}
 	
 	@Override

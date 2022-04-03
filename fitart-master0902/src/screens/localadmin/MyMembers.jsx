@@ -6,12 +6,13 @@ import { url } from "../../common/constant";
 import Logout from '../../screens/common/Logout';
   import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-//import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const AllMembers = () => {
     const [members, setMember] = useState([]);
     const history = useHistory();
-
+    const user = useSelector((state) => state.isSignin);
+ console.log(user)
     //const isLogIn = useSelector((state) => state.isSignin);
 
     // if(isLogIn.status === false){
@@ -26,13 +27,13 @@ const AllMembers = () => {
     } , []);
 
     const getMember = () => {
-        axios.get(url+"/users/members").then((response) => {
+        axios.post(url+"/users/branchmembers/"+user.user.branch.id).then((response) => { 
             const result = response.data;
             console.log(result);
             if (result.status === "OK" ) {
                 setMember(result.response);
             }else{
-                alert("users not found");
+                alert("users not found"); 
             }
         });
     }
@@ -62,7 +63,7 @@ const AllMembers = () => {
         <div className="privacydiv">
              <Logout/>
              <Link to="/register" className="btn btn-warning"> Add Member </Link>
-            <h1 align="center">All Members</h1> 
+            <h1 align="center">My Members</h1> 
             
             <table className="table">
                 <thead class="thead-dark">
@@ -94,7 +95,7 @@ const AllMembers = () => {
                                     <td>
                                         <button type="button" class="btn btn-danger" onClick={()=>{deleteMember(member)}}>
                                            Delete
-                                        </button>
+                                        </button>&nbsp;&nbsp;
                                         <button type="button" class="btn btn-light" onClick = {()=>{
                                  history.push('/updatemembers', {members:member})
                                 }}>

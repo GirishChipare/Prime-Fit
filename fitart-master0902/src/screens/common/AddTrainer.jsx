@@ -5,6 +5,7 @@ import { url } from "../../common/constant";
 import { useHistory } from "react-router-dom";
 import Logout from '../../screens/common/Logout';
 import {Link} from "react-router-dom";
+import {send} from 'emailjs-com';
 
 
 const AddTrainer = () => {
@@ -46,7 +47,8 @@ const AddTrainer = () => {
         const result = response.data;
         if (result.status === "OK") {
           alert("successfully registered");
-          history.push("/mytrainers");
+          onMail();
+          history.push("/localadminpage");
         } else {
           alert("email already exist");
         }
@@ -55,6 +57,33 @@ const AddTrainer = () => {
       
     }
   };
+
+  
+  const onMail = () => {
+
+    let msg = 'You have been registered sccessfully, please collect your credentails from the gym and you can continue to Workout from tomorrow. Stay Fit with Prime-Fit.!';
+
+    let tosend = {
+            from_name: 'Prime-Fit',
+            to_name: firstName,
+            message: msg,
+            reply_to:email,
+            }
+    send(
+        'service_ja2fqid',
+        'template_3db9blk',
+        tosend,
+         'h9_ri8bNmMdgVfk66'
+      )
+        .then((response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Mail Send Sucessfully!!')
+        })
+        .catch((err) => {
+          console.log('FAILED...', err);
+        });
+}
+
 
   return (
    

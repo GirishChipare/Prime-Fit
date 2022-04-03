@@ -64,13 +64,35 @@ public class User extends BaseEntity {
 
 	@Column(length = 20)
 	private int phone; 
-
-	@ManyToOne
-	@JoinColumn(nullable = false, unique = true)
+	
+	
+	@OneToOne
+	@JoinColumn(unique = true)
 	private GymBranch branch;
 
 	@JoinTable(name = "user_roles") 
 	@Enumerated(EnumType.STRING)
-	private UserRole role; 
+	private UserRole role;
+
+	public User(
+			@NotEmpty(message = "First Name can't be blank") @Length(min = 3, max = 20, message = "Invalid First Name length!!!!") String firstName,
+			@NotEmpty(message = "Last Name can't be blank") @Length(min = 3, max = 20, message = "Invalid Last Name length!!!!") String lastName,
+			@NotEmpty(message = "email must be supplied") String email,
+			@NotEmpty(message = "password must be supplied") String password, String confirmPassword, String locality,
+			String city, String state, int zipCode, int phone, UserRole role) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
+		this.locality = locality;
+		this.city = city;
+		this.state = state;
+		this.zipCode = zipCode;
+		this.phone = phone;
+		this.role = role;
+	} 
+	
 
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { url } from "../../common/constant";
 import { Link,useHistory } from "react-router-dom";
@@ -14,36 +14,38 @@ const UpdateBranch = () => {
     const [state, setState] = useState("");
     const [zipCode, setZipCode] = useState(0);
     const [phone, setPhone] = useState(0);
+   // const [branch, setBranch] = useState(0);
     const location = useLocation();
     const branchData = location.state.branches;
     const history = useHistory();
 
 
     
+    useEffect(() => {
+        console.log("User component is mounted");
+        setLocality(branchData.locality);
+        setZipCode(branchData.zipCode);
+      //.  getBranch();
     
+    } , []);
     
 console.log(branchData);
 console.log("xxxxxxx");
 
     const handleUpdate = () => {
-        setbranchName(branchData.branchName);
-        setLocality(branchData.locality);
-        setCity(branchData.city);
-        setState(branchData.state);
-        setZipCode(branchData.zipCode);
-        setPhone(branchData.phone);
-        setId(branchData.id);
 
         const data={
-            "id":id,
-            "branchName":branchName,
+
+            "id":branchData.id,
+            "branchName":branchData.branchName,
             "locality":locality,
-            "city":city,
-            "state":state,
+            "city":branchData.city,
+            "state":branchData.state,
             "zipCode":zipCode,
-            "phone":phone,
+            "phone":branchData.phone,
 
         }
+        console.log(data);
         setId(branchData.id);
         axios.put(url+"/branches/update/"+branchData.id,data).then((response) => {
             const result = response.data;
@@ -63,50 +65,65 @@ console.log("xxxxxxx");
             <Logout/>
             <h2>Update Branch</h2>
             <div className="col-md-6">
-                <label htmlFor="">Batch Id</label>   
+                <label htmlFor="">Branch Id</label>   
                 <input type="number" className="form-control" value={branchData.id}  readOnly/>
             </div>
             <div className="col-md-6">
                 <label htmlFor="">Branch Name</label>
                 <input type="text" className="form-control"
-                defaultValue={branchData.branchName}
+                value={branchData.branchName}
                 onChange={(e) => {setbranchName(e.target.value)}}
-                required/>
+                required
+                readOnly
+               // readOnly
+                />
             </div>
             <div className="col-md-6">
                 <label htmlFor="">Locality</label>
                 <input type="text" className="form-control"
-                defaultValue={branchData.locality}
+                value={locality}
                 onChange={(e)=>{setLocality(e.target.value)}}
                 required/>
             </div>
             <div className="col-md-6">
                 <label htmlFor="">City</label>
                 <input type="text" className="form-control"
-                defaultValue={branchData.city}
+                value={branchData.city}
                 onChange={(e)=>{setCity(e.target.value)}}
-                required/>
+                required
+                readOnly
+              //  readOnly
+                />
             </div>
             <div className="col-md-6">
                 <label htmlFor="">State</label>
                 <input type="text" className="form-control"
-                defaultValue={branchData.state}
+                value={branchData.state}
                 onChange={(e)=>{setState(e.target.value)}}
-                required/>
+                required
+                readOnly
+               // readOnly
+                />
             </div>
             <div className="col-md-6">
                 <label htmlFor="">ZipCode</label>
                 <input type="number" className="form-control"
-                defaultValue={branchData.zipCode}
+                value={zipCode}
                 onChange={(e)=>{setZipCode(e.target.value)}}
-                required/>
+                required
+                //readOnly
+               // readOnly
+                />
             </div>
             <div className="col-md-6">
                 <label htmlFor="">Phone</label>
                 <input type="number" className="form-control"
-                defaultValue={branchData.phone}
+                value={branchData.phone}
                 onChange={(e)=>{setPhone(e.target.value)}}
-                required/>
+                required
+                readOnly
+                //readOnly
+                />
             </div>
 <hr/>
 <hr/>

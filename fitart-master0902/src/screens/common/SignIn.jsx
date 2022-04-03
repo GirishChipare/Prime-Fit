@@ -12,6 +12,7 @@ import { url } from "../../common/constant";
 import { LoginAction } from "../../actions/LoginAction";
 
 
+
 const SignIn = () => {
 
   const [email, setEmail] = useState('')
@@ -19,7 +20,7 @@ const SignIn = () => {
   const history = useHistory()  //to redirect to another component
   const dispatch = useDispatch()  //to dispatch the action
 
-const UserLogin = () => {
+const UserLogin = () => { 
   if (email.length === 0) {
     alert('please enter email')
   } else if (password.length === 0) {
@@ -90,7 +91,7 @@ const UserLogin = () => {
        <Navbar/> 
        <hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/>
         <div class="form-group row">
-          <label for="email5" class="col-sm-5 col-form-label" align="middle">
+          <label for="email5" class="col-sm-4 col-form-label" align="right">
             Email
           </label>
           
@@ -107,7 +108,7 @@ const UserLogin = () => {
         </div>
         <hr/><hr/><hr/><hr/><hr/>
         <div class="form-group row">
-          <label for="password5" class="col-sm-5 col-form-label" align="middle">
+          <label for="password5" class="col-sm-4 col-form-label" align="right">
             Password
           </label>
           <div class="col-sm-4">

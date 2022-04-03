@@ -12,10 +12,10 @@ const  TrainerPage=()=> {
   console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
   console.log(isSignin.user);
 
-  // if(isSignin.status === false){
-  //   alert('please signin first!!')
-  //   history.push('/login')
-  // }
+  if(isSignin.status === false){
+    alert('please signin first!!')
+    history.push('/login')
+  }
   return (
     <div className="privacydiv">
         <Logout/>

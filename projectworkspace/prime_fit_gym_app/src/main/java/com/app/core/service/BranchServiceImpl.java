@@ -8,8 +8,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.core.dao.BatchRepository;
 import com.app.core.dao.GymBranchRepository;
+import com.app.core.dao.UserRepository;
+import com.app.core.pojos.Batch;
 import com.app.core.pojos.GymBranch;
+import com.app.core.pojos.User;
 
 @Service
 @Transactional
@@ -17,6 +21,12 @@ public class BranchServiceImpl implements IBranchService{
 	
 	@Autowired
 	private GymBranchRepository branchRepo;
+	
+	@Autowired
+	private BatchRepository batchRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
 
 	@Override
 	public List<GymBranch> getAllBranches() {
@@ -47,6 +57,20 @@ public class BranchServiceImpl implements IBranchService{
 	@Override
 	public String deleteBranch(int branchId) {
 		// TODO Auto-generated method stub
+		GymBranch b=branchRepo.findById(branchId).get();
+		
+		List<Batch> batches=batchRepo.getBatchByBranchId(b);
+		batches.forEach(System.out::println);
+		
+		for (Batch batch : batches) {
+			batchRepo.deleteById(batch.getId());
+		}
+		
+		List<User> users=userRepo.getBranchusers(b);
+		for (User user : users) {
+			userRepo.deleteById(user.getId());
+		}
+		
 		branchRepo.deleteById(branchId);
 		return "Branch with Id "+branchId+" deleted successfully";
 	}

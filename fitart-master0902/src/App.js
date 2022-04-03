@@ -67,6 +67,7 @@ function App() {
   const UpdateTrainer = lazy(() => import('../src/screens/localadmin/UpdateTrainer'));
   const ProfileMember = lazy(() => import('../src/screens/member/ProfileMember'));
   const ProfileLocal = lazy(() => import('./screens/member/ProfileLocal'));
+  const MyBranchPage = lazy(() => import('../src/screens/localadmin/MyBranchPage'));
   //const UpdateMember = lazy(() => import('../src/screens/common/UpdateMember'));
   
   
@@ -133,13 +134,14 @@ function App() {
             <Route path="/updatebatch" component={UpdateBatch} />
             <Route path="/updatebranch" component={UpdateBranch} />
             <Route path="/updatelocaladmin" component={UpdateLocalAdmin} />
-            <Route path="/updatemember" component={UpdateMember} />
+            <Route path="/updatemembers" component={UpdateMember} />
             <Route path="/updatetrainer" component={UpdateTrainer} />
 
             <Route path="/trainers" component={Trainers} />
             <Route path="/branches" component={BranchesList} />
             <Route path="/packages" component={PackagesList} />
             <Route path="/batches" component={Batches} />
+            <Route path="/mybranchpage" component={MyBranchPage} />
 
             {/* <Route component={ErrorPage} /> */}
             <Route path="/profilelocal" component={ProfileLocal} />

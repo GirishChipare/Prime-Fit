@@ -64,7 +64,7 @@ const AllTrainers = () => {
             <Logout/>
 
             <Link to="/addtrainer"> <a className="btn btn-warning" href=" ">Add Trainer</a> </Link>
-            <h1 align="center">All Trainers</h1> 
+            <h1 align="center">My Trainers</h1> 
 
            
 
@@ -82,7 +82,7 @@ const AllTrainers = () => {
                     </tr>
                 </thead>
                 <tbody id="myTable">
-                    {
+                    { 
                         trainers.length >= 1 ? trainers.map(trainer => {
                             return(
                                 <tr key={trainer.id}>

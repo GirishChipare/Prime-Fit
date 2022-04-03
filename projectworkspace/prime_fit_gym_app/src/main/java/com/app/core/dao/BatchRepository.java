@@ -14,4 +14,7 @@ public interface BatchRepository extends JpaRepository<Batch, Integer> {
 	
 	@Query("select b from Batch b where b.branch=:id")
 	List<Batch> getBatchByBranchId( @Param("id")GymBranch id);
+	
+	
+	
 }

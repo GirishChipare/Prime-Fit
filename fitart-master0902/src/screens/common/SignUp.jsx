@@ -5,6 +5,8 @@ import { url } from "../../common/constant";
 import { useHistory } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import {Link} from "react-router-dom";
+import {send} from 'emailjs-com';
+import {useSelector} from 'react-redux';
 
 const SignUp = () => {
   const [firstName, setFname] = useState("");
@@ -20,6 +22,37 @@ const SignUp = () => {
   const [role, setRole] = useState("");
   const [userBranchId, setUserBranchId] = useState("");
   const history = useHistory();
+  //const isSignin = useSelector((state) => state.isSignin);
+ 
+
+
+  const onMail = () => {
+
+    let msg = 'User Registered Sccessfully, Please Continue to Workout from tomorrow';
+
+    let tosend = {
+            from_name: 'Prime-Fit',
+            to_name: firstName,
+            message: msg,
+            reply_to:email,
+            }
+    send(
+        'service_ja2fqid',
+        'template_3db9blk',
+        tosend,
+         'h9_ri8bNmMdgVfk66'
+      )
+        .then((response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Mail Send Sucessfully!!')
+        })
+        .catch((err) => {
+          console.log('FAILED...', err);
+        });
+}
+
+
+
 
   const addUser = () => {
     if (firstName === "" || lastName === "" || email === "" || password === "" || locality === "" || city === "" || state === "" || zipCode === "" || phone === "" ) {
@@ -46,7 +79,8 @@ const SignUp = () => {
         const result = response.data;
         if (result.status === "OK") {
           alert("successfully registered");
-          history.push("/mymembers");
+          onMail();
+          history.push("/localadminpage");
         } else {
           alert("email already exist");
         }

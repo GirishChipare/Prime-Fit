@@ -22,4 +22,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 //    public LearningLicense findByUserId(@Param(value = "a") User user);
 	@Query("select u from User u where u.role=:role and u.branch=:id")
 	List<User> getUserByBranchId(@Param("role") UserRole role, @Param("id")GymBranch id);
+	
+	
+	@Query("select u from User u where u.branch=:id")
+	List<User> getBranchusers( @Param("id")GymBranch id);
 }

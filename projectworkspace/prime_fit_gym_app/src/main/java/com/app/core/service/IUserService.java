@@ -26,7 +26,7 @@ public interface IUserService {
 //	 List<User> getAllLocalAdmins(Role localAdmin);
 
 	// update user
-	 User updateUser(User user);
+	 User updateUser(User user,int id);
 
 	// register new user
 	User register(User user, int userBranchId);
