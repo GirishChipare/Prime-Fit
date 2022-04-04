@@ -151,6 +151,8 @@ const  BranchPage=()=> {
 
              <Link to="/addtrainer"> <a className="btn btn-warning" href=" ">Add Trainer</a> </Link>
 
+            <Link to="/addbatch"> <a className="btn btn-warning" href=" ">Add Batch</a> </Link>
+
             <h1 align="center">All Members </h1> 
             
             <table className="table">

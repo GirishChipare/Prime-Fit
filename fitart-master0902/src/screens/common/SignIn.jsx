@@ -78,9 +78,20 @@ const UserLogin = () => {
         history.push('/memberpage')
       }
 
-      else {
-        console.log(result.message);
-        alert("User not found...plz try again!!");
+      else if(result.status !== "OK" ){
+        
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        text1: 'Email or Password Incorrect!',
+        footer: '<a href="/admin/signin">Why do I have this issue?</a>'
+      })
+
+
+
+        // console.log(result.message);
+        // alert("User not found...plz try again!!");
       }
     });
   }

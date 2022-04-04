@@ -38,17 +38,20 @@ const AllTrainers = () => {
         });
     }
 
-    const deleteTrainer = (trainer) => {
-        console.log(trainer.id);
-        axios.delete(url+"/users/delete/"+trainer.id).then((response) => {
-            const result = response.data;
-            if(result.status === "OK"){
-                getTrainer();
-            }else{
-                alert("error while user deletion"); 
-            }
-        })
-    }
+
+    
+
+    // const deleteTrainer = (trainer) => {
+    //     console.log(trainer.id);
+    //     axios.delete(url+"/users/delete/"+trainer.id).then((response) => {
+    //         const result = response.data;
+    //         if(result.status === "OK"){
+    //             getTrainer();
+    //         }else{
+    //             alert("error while user deletion"); 
+    //         }
+    //     })
+    // }
 
     // $(document).ready(function(){
     //     $("#myInput").on("keyup", function() {

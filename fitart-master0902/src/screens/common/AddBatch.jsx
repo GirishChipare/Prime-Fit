@@ -28,7 +28,7 @@ const AddBatch = () => {
         const result = response.data;
         if (result.status === "OK") {
           alert("successfully registered");
-          history.push("/allbatches");
+          history.push("/localadminpage");
         } else {
           alert("email already exist");
         }

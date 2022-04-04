@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.core.custom_exception.GlobalExceptionHandler;
 import com.app.core.dto.LoginRequest;
 import com.app.core.dto.LoginResponse;
 import com.app.core.dto.ResponseDTO;
@@ -90,13 +91,23 @@ public class UserController {
 		return new ResponseDTO<>(HttpStatus.OK, "User deleted successfully", deleteUser);
 	}
 	
+	//@SuppressWarnings("unused")
 	@PostMapping("/signin")
 	public LoginResponse<?> authenticateUser(@RequestBody LoginRequest request){
 		System.out.println("in user authentication "+request);
+		
 		User user = userService.authenticateUserLogin(request);
+		if(user != null) {
 		UserRole role=user.getRole();
 		System.out.println("User "+user+ " "+" Role "+role);
-		return new LoginResponse<>(HttpStatus.OK,"user found ",user,role);
+//		return new LoginResponse<>(HttpStatus.OK,"user found ",user,role);
+		
+		
+            return new LoginResponse<>(HttpStatus.OK,"user found ",user,role);
+        }else {
+            return new LoginResponse<>(HttpStatus.NOT_FOUND,"user not found",null,null);
+        	
+        }
 		
 	}
 	
