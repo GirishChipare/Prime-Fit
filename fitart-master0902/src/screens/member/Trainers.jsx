@@ -106,7 +106,7 @@ const AllTrainers = () => {
                 </tbody>
             </table>  
             <div >
-             <Link to="/memberpage" className="btn btn-info" align="right"> Back </Link>
+             <Link to="/trainerpage" className="btn btn-info" align="right"> Back </Link>
              </div>
             
         </div>
