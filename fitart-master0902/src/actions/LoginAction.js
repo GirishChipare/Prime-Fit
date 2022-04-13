@@ -9,5 +9,5 @@ export const LoginFaileAction = () =>{
     return {
         type: 'false',
         user: {},
-    }
+    } 
 }
